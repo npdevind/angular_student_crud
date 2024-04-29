@@ -1,4 +1,9 @@
-import { Pool } from "pg";
+import pg from "pg";
+
+const { Pool } = pg;
+
+const password = process.env.DB_PASSWORD;
+console.log("DB_PASSWORD:", password); // Debug log
 
 const con = new Pool({
   user: process.env.DB_USER,
@@ -6,8 +11,6 @@ const con = new Pool({
   database: process.env.DB_DATABASE,
   password: process.env.DB_PASSWORD,
   port: Number(process.env.DB_PORT),
-  max: 60,
-  idleTimeoutMillis: 30,
 });
 
 export default con;
