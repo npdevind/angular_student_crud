@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ViewComponent } from './post/view/view.component';
+import { PostService } from './post/post.service';
 
 @Component({
   selector: 'app-root',

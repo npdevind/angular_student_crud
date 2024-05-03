@@ -2,9 +2,6 @@ import pg from "pg";
 
 const { Pool } = pg;
 
-const password = process.env.DB_PASSWORD;
-console.log("DB_PASSWORD:", password); // Debug log
-
 const con = new Pool({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
