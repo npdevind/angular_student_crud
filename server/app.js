@@ -3,13 +3,23 @@ import express from "express";
 import router from "./routes/api.js";
 import con from "./db/config.js";
 import swaggerUi from "swagger-ui-express";
-import specs from "./swaggerConfig.js";
 
 const app = express();
 
+app.use(express.json());
+
 // Mount Swagger UI middleware
+var options = {
+  explorer: true,
+};
+import swaggerDocument from "./swagger-output.json" assert { type: "json" };
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument, options)
+);
+
 app.use("/api/v1", router);
-app.use("/all-api", swaggerUi.serve, swaggerUi.setup(specs));
 
 const PORT = process.env.PORT || 8080;
 
